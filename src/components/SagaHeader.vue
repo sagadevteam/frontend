@@ -18,9 +18,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#"><span>Sign in</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><span>Sign up</span></a>
-          </li>
+          <router-link tag="li" to="/signup" class="nav-item">
+            <a class="nav-link">Sign up</a>
+          </router-link>
         </ul>
       </div>
     </nav>

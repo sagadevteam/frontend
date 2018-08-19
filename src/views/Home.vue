@@ -7,8 +7,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
-  name: 'home',
+  name: 'Home',
   computed: {
     ...mapGetters([
       'roomsToday'
