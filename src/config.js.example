@@ -1,0 +1,9 @@
+// Saga frontend config
+const config = {
+  api: {
+    domain: 'localhost',
+    port: '8080'
+  }
+}
+
+module.exports = config
