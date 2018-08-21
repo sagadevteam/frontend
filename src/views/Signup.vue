@@ -59,7 +59,7 @@ export default {
 
           this.msg = data.msg
           this.err = {}
-          this.$router.push("/login")
+          this.$router.push('/login')
         })
         .catch((err) => {
           if (err.response) {
