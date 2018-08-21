@@ -1,8 +1,8 @@
 <template>
-  <section class="signup">
+  <section class="login">
     <div class="text-center">
-      <form class="form-signup">
-        <h3 class="mb-3 font-weight-normal">Sign up</h3>
+      <form class="form-login">
+        <h3 class="mb-3 font-weight-normal">Login</h3>
         <h5 class="mb-3 font-weight-normal" v-show="msg.length > 0">{{ msg }}</h5>
         <div class="form-group">
           <label for="email" class="sr-only">Email address</label>
@@ -16,12 +16,12 @@
           <small class="form-text text-left text-danger" v-show="err.password">{{ err.password }}</small>
         </div>
 
-        <div class="form-group">
-          <label for="password-again" class="sr-only">Password again</label>
-          <input v-model="passwordAgain" type="password" id="password-again" class="form-control" placeholder="Password again" required="">
-          <small class="form-text text-left text-danger" v-show="err.password_again">{{ err.password_again }}</small>
-        </div>
-        <button v-on:click.prevent.self="submitForm" type="submit" class="btn btn-lg btn-primary btn-block" v-bind:disabled="submitted">Sign up</button>
+        <!--div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div-->
+        <button v-on:click.prevent.self="submitForm" type="submit" class="btn btn-lg btn-primary btn-block" v-bind:disabled="submitted">Login</button>
       </form>
     </div>
   </section>
@@ -31,12 +31,11 @@
 import Api from '@/components/api'
 
 export default {
-  name: 'Signup',
+  name: 'Login',
   data () {
     return {
       email: '',
       password: '',
-      passwordAgain: '',
       err: {},
       msg: '',
       submitted: false
@@ -44,11 +43,10 @@ export default {
   },
   methods: {
     submitForm () {
-      let apiUri = `/signup`
+      let apiUri = `/login`
       let data = {
         email: this.email,
-        password: this.password,
-        password_again: this.passwordAgain
+        password: this.password
       }
 
       this.submitted = true
@@ -59,7 +57,7 @@ export default {
 
           this.msg = data.msg
           this.err = {}
-          this.$router.push("/login")
+        //   this.$router.push("/")
         })
         .catch((err) => {
           if (err.response) {
@@ -83,7 +81,7 @@ export default {
 </script>
 
 <style scoped>
-.form-signup {
+.form-login {
   width: 100%;
   max-width: 330px;
   padding: 15px;

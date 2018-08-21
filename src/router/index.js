@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // router views
 const Home = () => import('@/views/Home')
 const Signup = () => import('@/views/Signup')
+const Login = () => import('@/views/Login')
 
 Vue.use(Router)
 
@@ -18,6 +19,10 @@ export default new Router({
       path: '/signup',
       name: 'Signup',
       component: Signup
+    }, {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
