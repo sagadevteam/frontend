@@ -14,15 +14,14 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div-->
-        <button v-on:click.prevent.self="submitForm" type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+        <button v-on:click.prevent.self="submitForm" type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
       </form>
     </div>
   </section>
 </template>
 
 <script>
-import axios from 'axios'
-import { api } from '@/config'
+import Api from '@/components/api'
 
 export default {
   name: 'Signup',
@@ -30,19 +29,20 @@ export default {
     return {
       email: '',
       password: '',
-      passwordAgain: ''
+      passwordAgain: '',
+      error: {}
     }
   },
   methods: {
     submitForm () {
-      let apiUri = `http://${api.domain}:${api.port}/signup`
+      let apiUri = `/signup`
       let data = {
         email: this.email,
         password: this.password,
-        passwordAgain: this.passwordAgain
+        password_again: this.passwordAgain
       }
 
-      axios.post(apiUri, data)
+      Api.post(apiUri, data)
         .then((res) => {
           console.log(res)
         })
