@@ -24,12 +24,12 @@ const mutations = {
   // TODO: some validation here
   setUser (state, user) {
     state.user = user
-  },
+  }
 }
 
 export default {
   state,
   getters,
   actions,
-  mutations,
-};
+  mutations
+}

@@ -10,8 +10,7 @@
 import SagaHeader from '@/components/SagaHeader'
 import SagaFooter from '@/components/SagaFooter'
 import Api from '@/components/api'
-import { mapGetters } from 'vuex'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'app',
@@ -33,7 +32,7 @@ export default {
           self.setUser(res.data.user)
         }
       })
-      .catch((err) => {
+      .catch(() => {
         // not authenticated, do nothing
       })
       .then(() => {
@@ -45,7 +44,7 @@ export default {
                 self.setUser(res.data.user)
               }
             })
-            .catch((err) => {
+            .catch(() => {
               // reset user
               if (self.isAuthenticated) {
                 self.setUser({})
@@ -57,7 +56,7 @@ export default {
   methods: {
     ...mapActions([
       'setUser'
-    ])    
+    ])
   }
 }
 </script>

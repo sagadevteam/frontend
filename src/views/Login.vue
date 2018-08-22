@@ -57,7 +57,7 @@ export default {
 
           this.msg = data.msg
           this.err = {}
-          this.$router.push("/")
+          this.$router.push('/')
         })
         .catch((err) => {
           if (err.response) {

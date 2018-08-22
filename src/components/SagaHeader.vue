@@ -49,7 +49,7 @@ export default {
           let data = res.data
 
           window.alert(data.msg)
-          this.$router.push("/")
+          this.$router.push('/')
         })
         .catch((err) => {
           console.warn(err)
