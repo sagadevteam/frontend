@@ -13,7 +13,10 @@
             <a class="nav-link" href="#">Rooms</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="#" v-show="isAuthenticated">Profile</a>
+          </li>
+          <li class="nav-item" v-show="isAuthenticated">
+            <a class="nav-link" v-on:click.prevent.self="logout">Logout</a>
           </li>
           <router-link tag="li" to="/login" class="nav-item" v-show="!isAuthenticated">
             <a class="nav-link">Login</a>
@@ -21,9 +24,6 @@
           <router-link tag="li" to="/signup" class="nav-item" v-show="!isAuthenticated">
             <a class="nav-link">Sign up</a>
           </router-link>
-          <li class="nav-item" v-show="isAuthenticated">
-            <a class="nav-link" v-on:click.prevent.self="logout">Logout</a>
-          </li>
         </ul>
       </div>
     </nav>
