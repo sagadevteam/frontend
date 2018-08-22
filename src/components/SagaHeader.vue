@@ -15,20 +15,30 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Profile</a>
           </li>
-          <router-link tag="li" to="/login" class="nav-item">
+          <router-link tag="li" to="/login" class="nav-item" v-show="!isAuthenticated">
             <a class="nav-link">Login</a>
           </router-link>
-          <router-link tag="li" to="/signup" class="nav-item">
+          <router-link tag="li" to="/signup" class="nav-item" v-show="!isAuthenticated">
             <a class="nav-link">Sign up</a>
           </router-link>
+          <li class="nav-item" v-show="isAuthenticated">
+            <a class="nav-link">Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'sage-header'
+  name: 'sage-header',
+  computed: {
+    ...mapGetters([
+      'isAuthenticated'
+    ])
+  }
 }
 </script>
 
