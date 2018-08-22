@@ -22,7 +22,7 @@
             <a class="nav-link">Sign up</a>
           </router-link>
           <li class="nav-item" v-show="isAuthenticated">
-            <a class="nav-link">Logout</a>
+            <a class="nav-link" v-on:click.prevent.self="logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -31,6 +31,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Api from '@/components/api'
 
 export default {
   name: 'sage-header',
@@ -38,6 +39,22 @@ export default {
     ...mapGetters([
       'isAuthenticated'
     ])
+  },
+  methods: {
+    logout () {
+      let apiUri = '/logout'
+
+      Api.post(apiUri, null)
+        .then((res) => {
+          let data = res.data
+
+          window.alert(data.msg)
+          this.$router.push("/")
+        })
+        .catch((err) => {
+          console.warn(err)
+        })
+    }
   }
 }
 </script>
