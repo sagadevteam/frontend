@@ -5,12 +5,12 @@
         <div class="card mx-0 my-3">
           <img class="card-img-top" :src="room.img" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">{{ room.title }} {{ room.inventory_id }}</h5>
+            <h5 class="card-title">{{ room.title }}</h5>
             <p class="card-text">{{ room.description }}</p>
             <p class="card-text">
               <span class="red-text">{{ room.start_time }}</span> ~ <span class="red-text">{{ room.end_time }}</span>
             </p>
-            <a href="#" class="btn btn-primary">Book now</a>
+            <a :href="'/room/' + room.inventory_id" class="btn btn-primary">Book now</a>
           </div>
         </div>
       </div>
