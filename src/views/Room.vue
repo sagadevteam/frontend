@@ -181,7 +181,7 @@ export default {
 
 .room-info-table {
   padding: 8px 3px;
-  height: 340px;
+  height: 100%;
   margin: 0px 15px;
   border: none;
   background: white;
