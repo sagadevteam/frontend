@@ -17,6 +17,10 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="https://i.imgur.com/4LnD7e7.jpg" alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>這裡需要文字設計師吹一吹</h5>
+            <p>這裡補一句punchline</p>
+          </div>
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="https://i.imgur.com/055DMYC.jpg" alt="Second slide">
@@ -126,12 +130,17 @@ export default {
   padding: 0;
 }
 .room-info {
-  margin: 15px 5px;
+  margin: 0px;
   .card {
     border-radius: 0px;
   }
+  .card-body {
+    padding: 0px;
+  }
   .card-title {
     width: 100%;
+    padding: .75rem;
+    margin: 0;
     display: inline-block;
   }
   .room-subtitle {
@@ -153,7 +162,7 @@ export default {
 
 .preview {
   background: #F7F7F7;
-  padding: 15px 0px;
+  padding: 15px 15px;
 }
 
 .preview > .col-4 {
