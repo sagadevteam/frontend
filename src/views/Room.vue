@@ -61,7 +61,21 @@
                 <div class="col-8 room-info-content">
                   <h2 class="room-info-title">Date</h2>
                   <HotelDatePicker @checkInChanged="checkInChanged" @checkOutChanged="checkOutChanged"/>
-                  <button v-if="totalPrice" type="button" class="btn btn-primary btn-lg btn-block"><span class="price-tag">$ {{ totalPrice }}</span></button>
+                  <button v-if="totalPrice" @click="buyTickets(ticketIds)" type="button" class="btn btn-primary btn-lg btn-block">
+                    <span class="price-tag">$ {{ totalPrice }}</span>
+                  </button>
+                  <div v-if="successMsg" class="alert alert-primary alert-dismissible" role="alert">
+                    {{ successMsg }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div v-if="errorMsg" class="alert alert-danger alert-dismissible" role="alert">
+                    {{ errorMsg }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
                 </div>
                 <div class="col-4 room-info-content">
                   <h2 class="room-info-title">Facilities</h2>
@@ -91,7 +105,9 @@ export default {
       checkInUnix: 'getCheckInDateUnix',
       checkOutUnix: 'getCheckOutDateUnix',
       totalPrice: 'getTotalPrice',
-      ticketIds: 'getTicketIds'
+      ticketIds: 'getTicketIds',
+      successMsg: 'getSuccessMsg',
+      errorMsg: 'getErrorMsg'
     })
   },
   async mounted () {
@@ -108,7 +124,7 @@ export default {
       let checkOutDateUnix = (checkOutDate.getTime() / 1000)
       this.setCheckOutDate(checkOutDateUnix)
     },
-    ...mapActions(['fetchRoom', 'fetchTickets', 'setCheckInDate', 'setCheckOutDate'])
+    ...mapActions(['fetchRoom', 'fetchTickets', 'setCheckInDate', 'setCheckOutDate', 'buyTickets'])
   }
 }
 </script>
@@ -203,5 +219,9 @@ export default {
 
 .price-tag {
   color: white;
+}
+
+.alert {
+  margin-top: 5px;
 }
 </style>

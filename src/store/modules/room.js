@@ -4,7 +4,9 @@ const state = {
   room: null,
   tickets: [],
   checkInDateUnix: null,
-  checkOutDateUnix: null
+  checkOutDateUnix: null,
+  successMsg: null,
+  errorMsg: null
 }
 
 // getters
@@ -47,6 +49,12 @@ const getters = {
       return matchedTicketIds
     }
     return []
+  },
+  getSuccessMsg (state) {
+    return state.successMsg
+  },
+  getErrorMsg (state) {
+    return state.errorMsg
   }
 }
 
@@ -69,6 +77,19 @@ const actions = {
   },
   setCheckOutDate ({ commit }, checkOutDateUnix) {
     commit('checkOutDateChanged', checkOutDateUnix)
+  },
+  async buyTickets ({ commit }, ticketIds) {
+    let url = '/buyticket'
+    if (ticketIds.length > 0) {
+      try {
+        let res = await Api.post(url, { ticket_id: ticketIds })
+        console.log(typeof res.data)
+        let msg = res.data.msg
+        commit('showSuccessResult', msg)
+      } catch (e) {
+        commit('showErrorResult', e.message)
+      }
+    }
   }
 }
 
@@ -85,6 +106,12 @@ const mutations = {
   },
   checkOutDateChanged (state, checkOutDateUnix) {
     state.checkOutDateUnix = checkOutDateUnix
+  },
+  showSuccessResult (state, successMsg) {
+    state.successMsg = successMsg
+  },
+  showErrorResult (state, errorMsg) {
+    state.errorMsg = errorMsg
   }
 }
 
