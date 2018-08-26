@@ -3,7 +3,9 @@ import App from '@/App'
 import router from '@/router'
 import Vuex from 'vuex'
 import store from '@/store'
+import HotelDatePicker from 'vue-hotel-datepicker'
 
+Vue.component('HotelDatePicker', HotelDatePicker)
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
