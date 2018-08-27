@@ -12,9 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Rooms</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" v-show="isAuthenticated">Profile</a>
-          </li>
+          <router-link tag="li" to="/user" class="nav-item" v-show="isAuthenticated">
+            <a class="nav-link">Profile</a>
+          </router-link>
           <li class="nav-item" v-show="isAuthenticated">
             <a class="nav-link" href="#" v-on:click.prevent.self="logout">Logout</a>
           </li>
